@@ -2,13 +2,13 @@
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: *');
 
-$db = mysqli_connect("localhost", "root_con", "root_connexion","mangalist")
-or die('could not connect to database');
+$db = new PDO('mysql:host=localhost;dbname=mangalist', 'root_con', 'root_connexion'); 
 
-$req = 'SELECT * FROM manga ORDER BY id DESC LIMIT 4;';
-$exe_req = mysqli_query($db,$req);
+$req = $db->prepare('SELECT * FROM manga ORDER BY id DESC LIMIT 4;');
+$req->execute();
 $lignes = [];
-while($rep = mysqli_fetch_assoc($exe_req)){
+
+while($rep = $req->fetch()){
     $lignes[] = $rep;
 }
 
