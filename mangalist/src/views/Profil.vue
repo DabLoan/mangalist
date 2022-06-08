@@ -11,6 +11,7 @@
   </section>
 </template>
 <script>
+import axios from 'axios'
 
 export default {
   name: 'MonProfil',
@@ -35,9 +36,21 @@ export default {
       this.userInfo['prenom'] = sessionStorage.getItem("prenom")
       this.userInfo['nom'] = sessionStorage.getItem("nom")
       this.userInfo['mail'] = sessionStorage.getItem("mail")
+      this.userInfo['id'] = sessionStorage.getItem("id")
     },
-    postModif () {
-
+    async postModif () {
+      let modifUser = this.toFormData(this.userInfo);
+      const reponse = await axios.post('http://localhost/backMangaList/modifProfil.php', modifUser);
+      this.userInfo = reponse.data
+      
+      this.$router.push('/profil')
+    },
+    toFormData: function(obj) {
+      let formData = new FormData();
+      for(let key in obj) {
+        formData.append(key, obj[key]);
+      }
+      return formData;
     }
   },
   mounted (){
