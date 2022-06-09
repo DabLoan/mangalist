@@ -21,7 +21,8 @@ export default {
         nom: '',
         prenom: '',
         pseudo: '',
-        mail: ''
+        mail: '',
+        id:''
       }
     }
   },
@@ -41,9 +42,11 @@ export default {
     async postModif () {
       let modifUser = this.toFormData(this.userInfo);
       const reponse = await axios.post('http://localhost/backMangaList/modifProfil.php', modifUser);
-      this.userInfo = reponse.data
-      
-      this.$router.push('/profil')
+      sessionStorage.setItem("pseudo", reponse.data[0]['pseudo'])
+      sessionStorage.setItem("nom", reponse.data[0]['nom'])
+      sessionStorage.setItem("prenom",reponse.data[0]['prenom'])
+      sessionStorage.setItem("mail", reponse.data[0]['mail'])
+      this.$router.push('/')
     },
     toFormData: function(obj) {
       let formData = new FormData();

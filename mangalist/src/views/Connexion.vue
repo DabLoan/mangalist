@@ -34,6 +34,7 @@ export default {
       sessionStorage.setItem("nom", this.userInfo[0]['nom'])
       sessionStorage.setItem("prenom", this.userInfo[0]['prenom'])
       sessionStorage.setItem("mail", this.userInfo[0]['mail'])
+      console.log(sessionStorage)
       this.$router.push('/')
     },
     toFormData: function(obj) {
