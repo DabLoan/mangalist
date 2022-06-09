@@ -25,8 +25,6 @@ if($req){
     while($reponse = $recup->fetch()){
         $lignes[] = $reponse;
     }
-    $message = "Changement effectué sans accroc";
-    echo json_encode($message);
     echo json_encode($lignes);
 }
 ?>

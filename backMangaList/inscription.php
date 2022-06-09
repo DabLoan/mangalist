@@ -27,12 +27,12 @@ if(!empty($nom) && !empty($prenom) && !empty($mail) && !empty($mdp) && !empty($c
             $req->bindParam(":mail", $mail);
             $req->bindParam(":mdp", $mdp);
             $req->execute();
-        if($req){
-            echo "1";
-        }else{
-            $message = "Un probleme est survenu.";
-            echo json_encode($message);
-        }
+            if($req){
+                echo "1";
+            }else{
+                $message = "Un probleme est survenu.";
+                echo json_encode($message);
+            }
         }else{
             $message = "Veuillez bien confirmer le mot de passe.";
             echo json_encode($message);

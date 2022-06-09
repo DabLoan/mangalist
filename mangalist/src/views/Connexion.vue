@@ -1,11 +1,11 @@
 <template>
   <section>
     <p style="margin-left:44%; font-size:x-large; margin-top:3%;">Se connecter</p>
-    <div class="block" >
-      <input type="text" name="mail" v-model="user.mail" Placeholder="Mail" class="top">
-      <input type="password" name="mdp" v-model="user.mdp" Placeholder="Mot de passe">
-      <input class="submit" type ="submit" value="Se connecter" v-on:click="postCon()"/>
-    </div>
+    <form class="block" >
+      <input type="text" name="mail" v-model="user.mail" Placeholder="Mail" class="top input">
+      <input type="password" name="mdp" v-model="user.mdp" Placeholder="Mot de passe" class="input">
+      <input class="submit input" type ="submit" value="Se connecter" v-on:click="postCon()"/>
+    </form>
   </section>
 </template>
 <script>
@@ -34,7 +34,6 @@ export default {
       sessionStorage.setItem("nom", this.userInfo[0]['nom'])
       sessionStorage.setItem("prenom", this.userInfo[0]['prenom'])
       sessionStorage.setItem("mail", this.userInfo[0]['mail'])
-      console.log(sessionStorage)
       this.$router.push('/')
     },
     toFormData: function(obj) {

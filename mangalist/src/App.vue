@@ -250,10 +250,10 @@ header p{
   margin-top: 11%;
 }
 
-input{
+.input{
   border: solid 0.5px #6b3636;
   border-radius: 4px;
-  height: 18%;
+  height: 13%;
   text-align: center;
 }
 
